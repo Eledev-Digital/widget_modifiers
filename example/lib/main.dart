@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:widget_modifiers/widget_modifiers.dart';
+import 'package:widget_modifiers/modifiers.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,10 +9,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Widget Modifiers',
       home: Scaffold(
-        body: Text("Hello World")
-            .padding()
-            .align(Alignment.topLeft)
-            .onTap(() => print("hello World")),
+        body: Stack(
+          children: [
+            Text("Hello World")
+                .padding()
+                .rotate(10)
+                .align(Alignment.center)
+                .onTap(() => print("hello World")),
+
+            Container(color: Colors.red)
+                .frame(height: 100, width: 200)
+                .position(bottom: 20, left: 30)
+          ],
+        ).padding(EdgeInsets.all(20)),
       ),
     );
   }
