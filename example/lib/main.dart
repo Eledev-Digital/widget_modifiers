@@ -10,24 +10,27 @@ class MyApp extends StatelessWidget {
       title: 'Widget Modifiers',
       home: Scaffold(
         body: Stack(
+          alignment: Alignment.center,
           children: [
             Text("Hello World")
+                .font(size: 20, weight: FontWeight.bold)
                 .padding(EdgeInsets.all(20))
-                .rotate(180)
-                .align(Alignment.topCenter)
-                .onTap(() => print("hello World")),
+                .background(Theme.of(context).accentColor)
+                .shadowRectClipper(shadow: shadow(), borderRadius: 20)
+                .rotate(10)
+                .onTap(() => print("hello World"))
+                .position(top:50, right:50),
+            Container(color: Colors.yellow)
+                .shadowCircleClipper(radius: 150, shadow: shadow())
+                .align(Alignment.center)
+                .opacity(0.9),
             Container(color: Colors.red)
-                .shadowCircleClipper(radius: 90, shadow: shadow())
-                .align(Alignment.center),
-            Container(color: Colors.blue)
-                .aspectRatio(4 / 3)
-                .shadowRectClipper(borderRadius: 20, shadow: shadow())
-                .align(Alignment.bottomLeft)
-                .padding(EdgeInsets.all(20))
-                .rotate(5)
-
+                .aspectRatio(4 / 1)
+                .shadowRectClipper(shadow: shadow(), borderRadius: 20)
+                .align(Alignment.bottomCenter)
+           
           ],
-        ).padding(EdgeInsets.all(20)),
+        ).padding(EdgeInsets.all(40)),
       ),
     );
   }
