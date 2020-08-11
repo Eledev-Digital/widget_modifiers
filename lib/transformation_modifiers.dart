@@ -7,10 +7,14 @@ extension TransformatonModifiers<T extends Widget> on T {
         angle: angle * pi / 180,
       );
 
-  Transform translate({Offset offset, bool transformHitTests = true}) =>
+  Transform translate({
+    @required double x,
+    @required double y,
+    bool transformHitTests = true,
+  }) =>
       Transform.translate(
         child: this,
-        offset: offset,
+        offset: Offset(x, y),
         transformHitTests: transformHitTests,
       );
 
