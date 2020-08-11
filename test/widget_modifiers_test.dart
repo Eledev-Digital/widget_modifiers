@@ -48,7 +48,7 @@ void main() {
     });
 
      test('Theme Modifier', () {
-      final widget = baseWidget.theme(ThemeData(), true);
+      final widget = baseWidget.theme(ThemeData());
       expect(widget is Theme, true);
     });
   });
