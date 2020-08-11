@@ -17,11 +17,30 @@ extension WidgetModifiers<T extends Widget> on T {
         aspectRatio: aspectRatio ?? 1,
       );
 
-  Theme theme(ThemeData data, bool isMaterial) => Theme(
+  Theme theme(ThemeData data, {bool isMaterial = true}) => Theme(
         child: this,
         data: data,
         isMaterialAppTheme: isMaterial,
       );
+
+  DefaultTextStyle font({
+    double size,
+    FontWeight weight,
+    Color color,
+    String family,
+    FontStyle fontStyle,
+  }) =>
+      DefaultTextStyle(
+        child: this,
+        style: TextStyle(
+          color: color,
+          fontWeight: weight,
+          fontSize: size,
+          fontFamily: family,
+          fontStyle: fontStyle,
+        ),
+      );
+
   Expanded expanded([int flex]) => Expanded(
         child: this,
         flex: flex,
@@ -32,43 +51,8 @@ extension WidgetModifiers<T extends Widget> on T {
         opacity: opacity,
       );
 
-  ClipPath clipRect({double borderRadius = 0}) => ClipPath(
+  DecoratedBox background(Color color) => DecoratedBox(
         child: this,
-        clipBehavior: Clip.antiAlias,
-        clipper: RectClipper(borderRadius: borderRadius),
-      );
-
-  ClipPath clipCustom({CustomClipper<Path> clipper}) => ClipPath(
-        child: this,
-        clipBehavior: Clip.antiAlias,
-        clipper: clipper,
-      );
-
-  ClipPath clipCircle({double radius = 20}) => ClipPath(
-        child: this,
-        clipBehavior: Clip.antiAlias,
-        clipper: CircleClipper(radius: radius),
-      );
-
-  ShadowClipper shadowRectClipper({
-    @required Shadow shadow,
-    double borderRadius = 0,
-  }) =>
-      ShadowClipper(
-        child: this,
-        clipper: RectClipper(borderRadius: borderRadius),
-        shadow: shadow,
-      );
-
-
- ShadowClipper shadowCircleClipper({
-    @required Shadow shadow,
-    double radius = 25,
-  }) =>
-      ShadowClipper(
-        child: this,
-        clipper: CircleClipper(radius: radius),
-        shadow: shadow,
+        decoration: BoxDecoration(color: color),
       );
 }
-
