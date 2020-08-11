@@ -12,17 +12,29 @@ class MyApp extends StatelessWidget {
         body: Stack(
           children: [
             Text("Hello World")
-                .padding()
-                .rotate(10)
-                .align(Alignment.center)
+                .padding(EdgeInsets.all(20))
+                .rotate(180)
+                .align(Alignment.topCenter)
                 .onTap(() => print("hello World")),
-
             Container(color: Colors.red)
-                .frame(height: 100, width: 200)
-                .position(bottom: 20, left: 30)
+                .shadowCircleClipper(radius: 90, shadow: shadow())
+                .align(Alignment.center),
+            Container(color: Colors.blue)
+                .aspectRatio(4 / 3)
+                .shadowRectClipper(borderRadius: 20, shadow: shadow())
+                .align(Alignment.bottomLeft)
+                .padding(EdgeInsets.all(20))
+                .rotate(5)
+
           ],
         ).padding(EdgeInsets.all(20)),
       ),
     );
   }
+
+  Shadow shadow() => Shadow(
+        color: Color.fromRGBO(0, 0, 0, 0.5),
+        offset: Offset(0, 4),
+        blurRadius: 8,
+      );
 }
